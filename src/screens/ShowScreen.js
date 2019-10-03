@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Context } from "../context/BlogContext";
 import { EvilIcons } from "@expo/vector-icons";
 const ShowScreen = ({ navigation }) => {
-  // test to view item.id from IndexScreen
+  // log test to view item.id from provided by IndexScreen
   //console.log(navigation.getParam("id"));
 
   // state === the list of blog posts
@@ -27,7 +27,11 @@ const ShowScreen = ({ navigation }) => {
 ShowScreen.navigationOptions = ({ navigation }) => {
   return {
     headerRight: (
-      <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Edit", { id: navigation.getParam("id") })
+        }
+      >
         <EvilIcons name="pencil" style={styles.pencil} />
       </TouchableOpacity>
     )

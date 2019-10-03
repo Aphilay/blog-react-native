@@ -3,6 +3,10 @@ import createDataContext from "./createDataContext";
 // reducer function that gets called by 'dispatch' function
 const blogReducer = (state, action) => {
   switch (action.type) {
+    case "edit_blogpost":
+      return state.map(blogPost => {
+        return blogPost.id === action.payload.id ? action.payload : blogPost;
+      });
     case "delete_blogpost":
       return state.filter(blogPost => blogPost.id !== action.payload);
     case "add_blogpost":
@@ -24,7 +28,9 @@ const addBlogPost = dispatch => {
       type: "add_blogpost",
       payload: { title, content }
     });
-    callback();
+    if (callback) {
+      callback();
+    }
   };
 };
 
@@ -39,7 +45,9 @@ const addBlogPost = dispatch => {
 //         type: "add_blogpost",
 //         payload: { title, content }
 //       });
-//       callback();
+//       if(callback){
+//        callback();
+//        }
 //     } catch (error) {
 //       console.log(error);
 //     }
@@ -51,11 +59,22 @@ const deleteBlogPost = dispatch => {
     dispatch({ type: "delete_blogpost", payload: id });
   };
 };
+
+const editBlogPost = dispatch => {
+  return (id, title, content, callback) => {
+    dispatch({ type: "edit_blogpost", payload: { id, title, content } });
+    if (callback) {
+      callback();
+    }
+  };
+};
 // Context: Object
 // Provider: data that is available throughout app
 // []: initial state, empty array
+// Actions addBlogPost, deleteBlogPost, editBlogPost is now availble
+// to all child components through Context object
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost, deleteBlogPost },
-  []
+  { addBlogPost, deleteBlogPost, editBlogPost },
+  [{ title: "TEST POST", content: "TEST CONTENT", id: 1 }]
 );
