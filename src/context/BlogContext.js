@@ -1,6 +1,6 @@
 import createDataContext from "./createDataContext";
 
-// utilize useReducer hook
+// reducer function that gets called by 'dispatch' function
 const blogReducer = (state, action) => {
   switch (action.type) {
     case "delete_blogpost":
@@ -19,13 +19,32 @@ const blogReducer = (state, action) => {
   }
 };
 const addBlogPost = dispatch => {
-  return (title, content) => {
+  return (title, content, callback) => {
     dispatch({
       type: "add_blogpost",
       payload: { title, content }
     });
+    callback();
   };
 };
+
+// VERSION 2 of addBlogPost.
+// async HTTP request with callback
+// note: this is typical format when talking to API
+// const addBlogPost = dispatch => {
+//   return async (title, content, callback) => {
+//     try {
+//       await axios.post("url", title, content);
+//       dispatch({
+//         type: "add_blogpost",
+//         payload: { title, content }
+//       });
+//       callback();
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
 const deleteBlogPost = dispatch => {
   return id => {
