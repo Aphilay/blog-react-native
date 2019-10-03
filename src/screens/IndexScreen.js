@@ -41,7 +41,7 @@ const IndexScreen = ({ navigation }) => {
 };
 
 // Direct reference to IndexScreen component, which contains navigationOptions
-// This is used to show '+' icon only on IndexScreen
+// This is used to show '+' icon only on IndexScreen ONLY
 // navigation object is passed in to use navigate function
 IndexScreen.navigationOptions = ({ navigation }) => {
   return {
