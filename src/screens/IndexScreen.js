@@ -11,11 +11,11 @@ import { Context } from "../context/BlogContext";
 import { Feather } from "@expo/vector-icons";
 const IndexScreen = ({ navigation }) => {
   // test to see what props object contains (e.g. navigation)
+  // pass in props in replace of navigation
   //console.log(props);
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost } = useContext(Context);
   return (
     <View>
-      <Button title="Add Post" onPress={addBlogPost} />
       <FlatList
         data={state}
         keyExtractor={blogPost => blogPost.title}
