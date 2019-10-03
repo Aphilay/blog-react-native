@@ -1,5 +1,5 @@
 // This file provides a resuable function allowing
-// many resources(e.g. blog, image, text) to set up a Context and Provider
+// many resources(e.g. blog, images, comments) to set up a Context and Provider
 import React, { useReducer } from "react";
 
 export default (reducer, actions, initialState) => {
