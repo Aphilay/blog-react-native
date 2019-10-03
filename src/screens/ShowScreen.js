@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Context } from "../context/BlogContext";
+import { EvilIcons } from "@expo/vector-icons";
 const ShowScreen = ({ navigation }) => {
   // test to view item.id from IndexScreen
   //console.log(navigation.getParam("id"));
@@ -16,10 +17,28 @@ const ShowScreen = ({ navigation }) => {
   return (
     <View>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
     </View>
   );
 };
+// Direct reference to ShowScreen component, which contains navigationOptions
+// This is used to show pencil(edit) icon only on ShowScreen ONLY
+// navigation object is passed in to use navigate function
+ShowScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: (
+      <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
+        <EvilIcons name="pencil" style={styles.pencil} />
+      </TouchableOpacity>
+    )
+  };
+};
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  pencil: {
+    fontSize: 30,
+    marginRight: 10
+  }
+});
 
 export default ShowScreen;
