@@ -40,6 +40,18 @@ const IndexScreen = ({ navigation }) => {
   );
 };
 
+// Direct reference to IndexScreen component, which contains navigationOptions
+// This is used to show '+' icon only on IndexScreen
+// navigation object is passed in to use navigate function
+IndexScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: (
+      <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+        <Feather style={styles.plus} name="plus" />
+      </TouchableOpacity>
+    )
+  };
+};
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
@@ -54,9 +66,11 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24
+  },
+  plus: {
+    fontSize: 30,
+    marginRight: 10
   }
 });
 
 export default IndexScreen;
-
-//deletePost
