@@ -14,11 +14,24 @@ const IndexScreen = ({ navigation }) => {
   // console.log(props);
   const { state, deleteBlogPost, getBlogPosts } = useContext(Context);
 
-  // useEffect will only call getBloPosts once upon render
-  // []: inidicates that we only want arrow function exaclty
+  // useEffect will only call getBlogPosts once upon render
+  // []: inidicates that we only want arrow function exactly
   // once when component shows up on screen
+  // however, 'didFocus' fetches getBlogPost when IndexScreen
+  // becomes primary screen on device again.
   useEffect(() => {
     getBlogPosts();
+    const listener = navigation.addListener("didFocus", () => {
+      getBlogPosts();
+
+      return () => {
+        //useEffect return statement: only gets reached when IndexScreen is no longer in use
+        // this call cleans up listener obj to prevent memory leak
+        // WHY?: incase we don't want to use IndexScreen
+        // component anymore on device any longer
+        listener.remove();
+      };
+    });
   }, []);
 
   return (
