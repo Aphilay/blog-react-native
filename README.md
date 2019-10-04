@@ -7,10 +7,10 @@ cd to project root directory
 npm install
 
 ### Step 2:
-## In another terminal(#2):
-We have to make a json server on our machine.
+#### In another terminal(#2):
+We have to make a json server on our machine. See package.json for 'npm run db' mentioned below.
 
-cd to /jsonServer directory
+cd to /jsonserver directory
 
 ```
 npm install
@@ -18,15 +18,16 @@ npm run db
 ```
 
 ### Step 3:
-## In another terminal(#3):
-This starts the ngrok dependency (see scripts in package.json file)
+#### In another terminal(#3):
+This starts the ngrok dependency See package.json for 'npm run tunnel' script  mentioned below.
 ```
 npm run tunnel
 ```
+### Step 4:
+replace your ngrok "fowarding" URL (e.g. http://c797d552.ngrok.io) in blog/src/api/jsonServer.js.
 
-## replace your ngrok "fowarding" URL (e.g. http://c797d552.ngrok.io) in blog/src/api/jsonServer.js.
-
-## back in project root directory (/blog)
+### Step 5: terminal #1
+back in project root directory (/blog)
 ```
 npm start
 ```
