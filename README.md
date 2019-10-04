@@ -1,5 +1,5 @@
 # blog-react-native
-Blog application using React Native which allows users to perform CRUD operations. 
+Blog application using React Native which allows users to perform CRUD operations. This project uses json-server to store and retrieve data(blogs). See quickstart below.
 # quickstart
 ### Step 1:
 cd to project root directory
