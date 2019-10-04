@@ -4,8 +4,6 @@ Blog application using React Native which allows users to perform CRUD operation
 cd to project root directory
 <br>
 npm install
-<br>
-npm start
 
 ## In another terminal(#2):
 We have to make a json server on our machine.
