@@ -19,15 +19,15 @@ npm run db
 
 ### Step 3:
 #### In another terminal(#3):
-This starts the ngrok dependency See package.json for 'npm run tunnel' script  mentioned below.
+cd to /jsonserver directory again. Start the ngrok dependency. See package.json for 'npm run tunnel' script  mentioned below.
 ```
 npm run tunnel
 ```
 ### Step 4:
-replace your ngrok "fowarding" URL (e.g. http://c797d552.ngrok.io) in blog/src/api/jsonServer.js.
+REPLACE your ngrok "fowarding" URL (e.g. http://c797d552.ngrok.io) in blog/src/api/jsonServer.js.
 
 ### Step 5: terminal #1
-back in project root directory (/blog)
+back in blog project root directory
 ```
 npm start
 ```
