@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
-  Button,
   TouchableOpacity
 } from "react-native";
 import { Context } from "../context/BlogContext";
@@ -12,8 +11,16 @@ import { Feather } from "@expo/vector-icons";
 const IndexScreen = ({ navigation }) => {
   // test to see what props object contains (e.g. navigation)
   // pass in props in replace of navigation
-  //console.log(props);
-  const { state, deleteBlogPost } = useContext(Context);
+  // console.log(props);
+  const { state, deleteBlogPost, getBlogPosts } = useContext(Context);
+
+  // useEffect will only call getBloPosts once upon render
+  // []: inidicates that we only want arrow function exaclty
+  // once when component shows up on screen
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
+
   return (
     <View>
       <FlatList
